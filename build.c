@@ -28,6 +28,7 @@ void menu(n)
         break;
     case 2:
         number();
+        random_doubleball();
         break;
     case 3:
         exit(0);
@@ -70,6 +71,34 @@ void random_powerball()
         }
         a[5] = rand() % 27 + 1;
         for (i = 0; i <= 4; i++)
+        {
+            printf("%02d ", a[i]);
+        }
+        printf("   %02d", a[5]);
+        printf("\n\n");
+    }
+    return 0;
+}
+
+void random_doubleball()
+{
+    srand(time(0));
+    int i, j;
+    int a[7];
+    for (j = 1; j <= z; j++)
+    {
+        printf("%02d:\n", j);
+        for (i = 0; i <= 5; i++)
+        {
+            a[i] = rand() % 33 + 1;
+            if (i > 0) //增加了随机生成数的效验功能，后输出的数不会与之前的数相同
+            {
+                if (a[i] == a[i - 1] || a[i] == a[i - 2] || a[i] == a[i - 3] || a[i] == a[i - 4] || a[i] == a[i - 5])
+                    i--;
+            }
+        }
+        a[6] = rand() % 16 + 1;
+        for (i = 0; i <= 5; i++)
         {
             printf("%02d ", a[i]);
         }
