@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int z;      //声明全局变量z，用于输入的买入数量计数
+int num_buy;      //声明全局变量num_buy，用于输入的买入数量计数
 int choice; //声明全局变量choice，用于menu的参数，及子函数内返回
 int main()
 {
@@ -17,7 +17,7 @@ int main()
 
 void menu(n)
 {
-    void number();            //声明number函数，主要用于输入购买数量的效验，并为z赋值
+    void number();            //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
     void random_powerball();  //声明，powerball算法实现函数
     void random_doubleball(); //声明，双色球算法实现函数
     switch (n)
@@ -41,15 +41,15 @@ void menu(n)
 void number()
 {
     printf("How many do you want to buy?\n");
-    scanf("%d", &z);
+    scanf("%d", &num_buy);
     printf("\n");
-    if (z > 5 || z <= 0) //限制了一次买入的数量，并且如果输入为负数将会报错，返回菜单
+    if (num_buy > 5 || num_buy <= 0) //限制了一次买入的数量，并且如果输入为负数将会报错，返回菜单
     {
         printf("don't buy too much! or input error.\n");
         menu(choice);
     }
     else
-        return (z);
+        return (num_buy);
 }
 
 void random_powerball()
@@ -57,7 +57,7 @@ void random_powerball()
     srand(time(0));
     int i, j;
     int a[6];
-    for (j = 1; j <= z; j++)
+    for (j = 1; j <= num_buy; j++)
     {
         printf("%02d:\n", j);
         for (i = 0; i <= 4; i++)
@@ -85,7 +85,7 @@ void random_doubleball()
     srand(time(0));
     int i, j;
     int a[7];
-    for (j = 1; j <= z; j++)
+    for (j = 1; j <= num_buy; j++)
     {
         printf("%02d:\n", j);
         for (i = 0; i <= 5; i++)
