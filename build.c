@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int num_buy;      //声明全局变量num_buy，用于输入的买入数量计数
-int choice; //声明全局变量choice，用于menu的参数，及子函数内返回
+int num_buy; //声明全局变量num_buy，用于输入的买入数量计数
+int choice;  //声明全局变量choice，用于menu的参数，及子函数内返回
 int main()
 {
     void menu(n); //声明函数menu，主要功能由menu实现，通选选择不通的选项调用其他子函数
@@ -55,7 +55,7 @@ void number()
 void random_powerball()
 {
     srand(time(0));
-    int i, j;
+    int i, j, k;
     int a[6];
     for (j = 1; j <= num_buy; j++)
     {
@@ -63,9 +63,9 @@ void random_powerball()
         for (i = 0; i <= 4; i++)
         {
             a[i] = rand() % 69 + 1;
-            if (i > 0) //增加了随机生成数的效验功能，后输出的数不会与之前的数相同
+            for (k = 1; k <= i; k++)//对避免重复数的效验算法进行了重写，使其更具备复用性
             {
-                if (a[i] == a[i - 1] || a[i] == a[i - 2] || a[i] == a[i - 3] || a[i] == a[i - 4])
+                if (a[i] == a[k - 1])
                     i--;
             }
         }
