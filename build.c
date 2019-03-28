@@ -4,7 +4,11 @@
 int num_buy;    //声明全局变量num_buy，用于输入的买入数量计数
 int choice;     //声明全局变量choice，用于menu的参数，及子函数内返回
 int num_choice; //声明全局变量num_choice，用赋值单组彩票生成数个数
+<<<<<<< HEAD
 int main(void)
+=======
+int main()
+>>>>>>> 1221c0187bbd392036d7ae5d01deac64bf3e3393
 {
     void menu(n); //声明函数menu，主要功能由menu实现，通选选择不通的选项调用其他子函数
     printf("choice lottery tickets: \n"
@@ -18,9 +22,15 @@ int main(void)
 
 void menu(n)
 {
+<<<<<<< HEAD
     void number(void); //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
     void random(int first, int second);
     void print_arr(void); //声明，powerball算法实现函数
+=======
+    void number(); //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
+    void random(int first, int second);
+    void print_arr(); //声明，powerball算法实现函数
+>>>>>>> 1221c0187bbd392036d7ae5d01deac64bf3e3393
     switch (n)
     {
     case 1:
@@ -69,7 +79,11 @@ void random(first, second)
                     i--;
             }
         }
+<<<<<<< HEAD
         a[num_choice + 1] = rand() % second + 1;
+=======
+        a[5] = rand() % second + 1;
+>>>>>>> 1221c0187bbd392036d7ae5d01deac64bf3e3393
         for (i = 0; i <= num_choice; i++)
         {
             printf("%02d ", a[i]);
