@@ -19,7 +19,6 @@ int main()
 
 void menu(n)
 {
-<<<<<<< HEAD
     void number(void); //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
     void random(int first, int second);
     void print_arr(void); //声明，powerball算法实现函数
