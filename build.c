@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int num_buy; //声明全局变量num_buy，用于输入的买入数量计数
-int choice;  //声明全局变量choice，用于menu的参数，及子函数内返回
-int main()
+int num_buy;    //声明全局变量num_buy，用于输入的买入数量计数
+int choice;     //声明全局变量choice，用于menu的参数，及子函数内返回
+int num_choice; //声明全局变量num_choice，用赋值单组彩票生成数个数
+int main(void)
 {
     void menu(n); //声明函数menu，主要功能由menu实现，通选选择不通的选项调用其他子函数
     printf("choice lottery tickets: \n"
@@ -17,18 +18,20 @@ int main()
 
 void menu(n)
 {
-    void number();            //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
-    void random_powerball();  //声明，powerball算法实现函数
-    void random_doubleball(); //声明，双色球算法实现函数
+    void number(void); //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
+    void random(int first, int second);
+    void print_arr(void); //声明，powerball算法实现函数
     switch (n)
     {
     case 1:
+        num_choice = 4;
         number();
-        random_powerball();
+        random(69, 27);
         break;
     case 2:
+        num_choice = 5;
         number();
-        random_doubleball();
+        random(33, 16);
         break;
     case 3:
         exit(0);
@@ -36,7 +39,6 @@ void menu(n)
         printf("input error! please try again.\n\n");
         main();
     }
-    return 0;
 }
 void number()
 {
@@ -48,62 +50,31 @@ void number()
         printf("don't buy too much! or input error.\n");
         menu(choice);
     }
-    else
-        return (num_buy);
 }
 
-void random_powerball()
+void random(first, second)
 {
     srand(time(0));
     int i, j, k;
-    int a[6];
+    int a[7];
     for (j = 1; j <= num_buy; j++)
     {
         printf("%02d:\n", j);
-        for (i = 0; i <= 4; i++)
+        for (i = 0; i <= num_choice; i++)
         {
-            a[i] = rand() % 69 + 1;
-            for (k = 1; k <= i; k++)//对避免重复数的效验算法进行了重写，使其更具备复用性
+            a[i] = rand() % first + 1;
+            for (k = 1; k <= i; k++) //对避免重复数的效验算法进行了重写，使其更具备复用性
             {
                 if (a[i] == a[k - 1])
                     i--;
             }
         }
-        a[5] = rand() % 27 + 1;
-        for (i = 0; i <= 4; i++)
+        a[num_choice + 1] = rand() % second + 1;
+        for (i = 0; i <= num_choice; i++)
         {
             printf("%02d ", a[i]);
         }
-        printf("   %02d", a[5]);
+        printf("   %02d", a[num_choice + 1]);
         printf("\n\n");
     }
-    return 0;
-}
-
-void random_doubleball()
-{
-    srand(time(0));
-    int i, j;
-    int a[7];
-    for (j = 1; j <= num_buy; j++)
-    {
-        printf("%02d:\n", j);
-        for (i = 0; i <= 5; i++)
-        {
-            a[i] = rand() % 33 + 1;
-            if (i > 0) //增加了随机生成数的效验功能，后输出的数不会与之前的数相同
-            {
-                if (a[i] == a[i - 1] || a[i] == a[i - 2] || a[i] == a[i - 3] || a[i] == a[i - 4] || a[i] == a[i - 5])
-                    i--;
-            }
-        }
-        a[6] = rand() % 16 + 1;
-        for (i = 0; i <= 5; i++)
-        {
-            printf("%02d ", a[i]);
-        }
-        printf("   %02d", a[5]);
-        printf("\n\n");
-    }
-    return 0;
 }
