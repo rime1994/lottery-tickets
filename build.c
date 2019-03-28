@@ -67,7 +67,7 @@ void random(first, second)
         for (i = 0; i <= num_choice; i++)
         {
             a[i] = rand() % first + 1;
-            for (k = 1; k <= i; k++) //对避免重复数的效验算法进行了重写，使其更具备复用性
+            for (k = 1; k <= i; k++) //对避免重复数的效验算法进行了重写，使其更具备复用性。
             {
                 if (a[i] == a[k - 1])
                     i--;
