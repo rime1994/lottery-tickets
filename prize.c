@@ -106,4 +106,3 @@ void random_build(first, second)
         }
     }
     arr_build[6] = rand() % second + 1;
-}
