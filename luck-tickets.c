@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int num_buy;  //声明全局变量num_buy，用于输入的买入数量计数
+int num_buy;    //声明全局变量num_buy，用于输入的买入数量计数
 int choice;     //声明全局变量choice，用于menu的参数，及子函数内返回
 int num_choice; //声明全局变量num_choice，用赋值单组彩票生成数个数
 int main(void)
@@ -52,7 +52,13 @@ void Menu()
 void Number()
 {
     printf("How many do you want to buy?\n");
+
     if(!scanf("%d", &num_buy))
+
+    scanf("%d", &num_buy);
+    printf("\n");
+    if (num_buy <= 0 || num_buy > 5) //限制了一次买入的数量，并且如果输入为负数将会报错，返回菜单
+
     {
         printf("Enter is not a num,the programmer shuting down");
     }
