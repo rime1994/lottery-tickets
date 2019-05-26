@@ -4,18 +4,24 @@
 int num_buy;    //声明全局变量num_buy，用于输入的买入数量计数
 int choice;     //声明全局变量choice，用于menu的参数，及子函数内返回
 int num_choice; //声明全局变量num_choice，用赋值单组彩票生成数个数
-void main(void)
+int main(void)
 {
-    void Menu(n); //声明函数menu，主要功能由menu实现，通选选择不通的选项调用其他子函数
+    void Menu(); //声明函数menu，主要功能由menu实现，通选选择不通的选项调用其他子函数
     printf("choice lottery tickets: \n"
            "1.powerball\n"
            "2.double coloer ball\n"
            "3.exit.\n");
-    scanf("%d", &choice);
-    Menu(choice);
+    if(!scanf("%d", &choice))
+    {
+        printf("Enter is not a num,this programmer shuting down");
+    }
+    else
+    {
+        Menu(choice);   
+    }
     system("pause");
 }
-void Menu(n)
+void Menu()
 {
     void Number(); //声明number函数，主要用于输入购买数量的效验，并为num_buy赋值
     void Random(int first, int second);
@@ -46,13 +52,25 @@ void Menu(n)
 void Number()
 {
     printf("How many do you want to buy?\n");
+
+    if(!scanf("%d", &num_buy))
+
     scanf("%d", &num_buy);
     printf("\n");
     if (num_buy <= 0 || num_buy > 5) //限制了一次买入的数量，并且如果输入为负数将会报错，返回菜单
+
     {
-        printf("don't buy too much! or input error.\n");
-        Menu(choice);
+        printf("Enter is not a num,the programmer shuting down");
     }
+    else
+    {
+         if (num_buy >= 5 || num_buy <= 0) //限制了一次买入的数量，并且如果输入为负数将会报错，返回菜单
+        {
+            printf("don't buy too much! or input error.\n");
+            Menu(choice);
+        }
+    }
+    printf("\n");
 }
 void Random(first, second)
 {
