@@ -13,7 +13,7 @@ int main(void)
            "3.exit.\n");
     if(!scanf("%d", &choice))
     {
-        printf("Enter is not a num,this programmer shuting down");
+        printf("Enter is not a num,this programmer shuting down\n");
     }
     else
     {
@@ -60,7 +60,7 @@ void Number()
     if (num_buy <= 0 || num_buy > 5) //限制了一次买入的数量，并且如果输入为负数将会报错，返回菜单
 
     {
-        printf("Enter is not a num,the programmer shuting down");
+        printf("Enter is not a num,the programmer shuting down\n");
     }
     else
     {
